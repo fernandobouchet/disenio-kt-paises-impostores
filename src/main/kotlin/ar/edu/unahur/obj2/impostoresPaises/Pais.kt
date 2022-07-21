@@ -53,6 +53,6 @@ class Pais(
     }
 
     fun aCuantoEquivaleEn(monto : Int, pais: Pais): Double {
-        return ((pais.cotizacionDolar / (this.cotizacionDolar * monto))* 100.0).roundToInt() / 100.0
+        return (((monto / this.cotizacionDolar) * pais.cotizacionDolar)* 100.0).roundToInt() / 100.0
     }
 }

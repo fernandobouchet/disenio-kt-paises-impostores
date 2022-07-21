@@ -5,8 +5,8 @@ import io.kotest.matchers.shouldBe
 
 class PaisesTest: DescribeSpec({
 
-    val bolivia = Pais("Bolivia", "BOL",10985059, 1098581.0,"América", "BOB", 6.89,mutableListOf<Pais>(), mutableListOf<String>("UNASUR"), mutableListOf<String>("Español", "Quechua", "Aymara"))
-    val argentina = Pais("Argentina", "ARG",20985059, 3098581.0,"América", "ARG", 126.89,mutableListOf<Pais>(),mutableListOf<String>("UNASUR"), mutableListOf<String>("Español"))
+    val bolivia = Pais("Bolivia", "BOL",10985059, 1098581.0,"América", "BOB", 100.0,mutableListOf<Pais>(), mutableListOf<String>("UNASUR"), mutableListOf<String>("Español", "Quechua", "Aymara"))
+    val argentina = Pais("Argentina", "ARG",20985059, 3098581.0,"América", "ARG", 200.0,mutableListOf<Pais>(),mutableListOf<String>("UNASUR"), mutableListOf<String>("Español"))
 
     describe("Test Bolivia") {
         bolivia.esPlurinacional().shouldBe(true)
@@ -16,6 +16,6 @@ class PaisesTest: DescribeSpec({
         bolivia.necesitaTraduccionCon(argentina).shouldBe(false)
         bolivia.esPotencialAliadoDe(argentina).shouldBe(true)
         bolivia.convieneIrDeComprasA(argentina).shouldBe(true)
-        bolivia.aCuantoEquivaleEn(10 , argentina).shouldBe(1.84)
+        bolivia.aCuantoEquivaleEn(100 , argentina).shouldBe(200)
     }
 })
