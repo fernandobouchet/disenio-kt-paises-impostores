@@ -28,6 +28,7 @@ class ObservatorioTest: DescribeSpec(
             Observatorio.convieneIrDeCompras("Argentina", "Bolivia").shouldBe(false)
             Observatorio.aCuantoEquivale(25,"Argentina", "Bolivia").shouldBe(1.36)
             Observatorio.codigoIsoPaisesMasPoblacion().shouldBe(listOf("NIG", "EEUU", "ITA", "ARG", "BOL"))
+            println( Observatorio.continenteConMasPaisesPlurinacionales())
         }
     }
 )

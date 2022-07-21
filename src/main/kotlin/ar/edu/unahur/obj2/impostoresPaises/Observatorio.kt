@@ -7,7 +7,7 @@ object Observatorio {
         paises.add(pais)
     }
 
-    fun paisQueRepresenta(pais: String): Pais? {
+    private fun paisQueRepresenta(pais: String): Pais? {
         return if(paises.isNotEmpty() && paises.any { x -> x.nombre == pais }) {
             paises.find { a -> a.nombre == pais }
         } else throw Exception("El pais indicado no se encuentra registrado en el observatorio")
@@ -37,5 +37,11 @@ object Observatorio {
         return paises.sortedByDescending { it.densidadPoblacional() }
             .take(5)
             .map { pais -> pais.codigoIso3 }
+    }
+
+    fun continenteConMasPaisesPlurinacionales(): String {
+        return paises.filter { pais -> pais.esPlurinacional() }
+            .groupBy { it.continente }
+            .maxByOrNull { it.value.size }!!.key
     }
 }
