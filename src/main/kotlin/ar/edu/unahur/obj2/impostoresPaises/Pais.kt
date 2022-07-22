@@ -10,17 +10,22 @@ class Pais(
     val continente: String,
     val codigoMoneda: String,
     val cotizacionDolar: Double,
-    val paisesLimitrofes: MutableList<Pais>,
     val bloquesRegionales: MutableList<String>,
     val idiomasOficiales: MutableList<String>
 ) {
+
+    val paisesLimitrofes: MutableList<Pais> = mutableListOf()
+
+    fun aniadirPaisesLimitrofes(pais: Pais) {
+        paisesLimitrofes.add(pais)
+    }
 
     fun esPlurinacional(): Boolean {
         return idiomasOficiales.size > 1
     }
 
     fun esUnaIsla(): Boolean {
-        return paisesLimitrofes.size == 0
+        return paisesLimitrofes.isEmpty()
     }
 
     fun densidadPoblacional(): Int {

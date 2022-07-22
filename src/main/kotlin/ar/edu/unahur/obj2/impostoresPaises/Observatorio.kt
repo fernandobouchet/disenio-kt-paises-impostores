@@ -44,4 +44,9 @@ object Observatorio {
             .groupBy { it.continente }
             .maxByOrNull { it.value.size }!!.key
     }
+
+    fun promedioDensidadPoblacionalInsulares(): Any {
+        val paisesInsulares =  paises.filter { pais -> pais.esUnaIsla() }
+        return paisesInsulares.sumBy { it.densidadPoblacional() } / paisesInsulares.size
+    }
 }
