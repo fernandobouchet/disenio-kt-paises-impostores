@@ -10,14 +10,30 @@ class PaisesTest: DescribeSpec({
     bolivia.aniadirPaisesLimitrofes(argentina)
     argentina.aniadirPaisesLimitrofes(bolivia)
 
-    describe("Test Bolivia") {
-        bolivia.esPlurinacional().shouldBe(true)
-        bolivia.esUnaIsla().shouldBe(false)
-        bolivia.densidadPoblacional().shouldBe(10)
-        bolivia.esLimitrofeDe(argentina).shouldBe(true)
-        bolivia.necesitaTraduccionCon(argentina).shouldBe(false)
-        bolivia.esPotencialAliadoDe(argentina).shouldBe(true)
-        bolivia.convieneIrDeComprasA(argentina).shouldBe(true)
-        bolivia.aCuantoEquivaleEn(100 , argentina).shouldBe(1828.09)
+    describe("Test sobre Bolivia") {
+        it("No es plurinacional") {
+            bolivia.esPlurinacional().shouldBe(true)
+        }
+        it("No es una isla") {
+            bolivia.esUnaIsla().shouldBe(false)
+        }
+        it("La densidad poblacional es de 10") {
+            bolivia.densidadPoblacional().shouldBe(10)
+        }
+        it("Es limitrofe de Argentina") {
+            bolivia.esLimitrofeDe(argentina).shouldBe(true)
+        }
+        it("No necesita traducción con Argentina") {
+            bolivia.necesitaTraduccionCon(argentina).shouldBe(false)
+        }
+        it("Es potencial aliado de Argentina") {
+            bolivia.esPotencialAliadoDe(argentina).shouldBe(true)
+        }
+        it("Conviene ir de compras a Argentina") {
+            bolivia.convieneIrDeComprasA(argentina).shouldBe(true)
+        }
+        it("100 BOL equivalen a 1828.09 ARG") {
+            bolivia.aCuantoEquivaleEn(100 , argentina).shouldBe(1828.09)
+        }
     }
 })

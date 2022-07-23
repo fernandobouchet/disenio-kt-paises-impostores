@@ -14,22 +14,40 @@ class ObservatorioTest: DescribeSpec(
         bolivia.aniadirPaisesLimitrofes(argentina)
         argentina.aniadirPaisesLimitrofes(bolivia)
 
-        describe("Test Observatorio") {
-            Observatorio.registrarPais(bolivia)
-            Observatorio.registrarPais(argentina)
-            Observatorio.registrarPais(estadosUnidos)
-            Observatorio.registrarPais(italia)
-            Observatorio.registrarPais(portugal)
-            Observatorio.registrarPais(nigeria)
+        Observatorio.paisesRegistrados.clear()
 
-            Observatorio.sonLimitrofes("Argentina" ,"Bolivia").shouldBe(true)
-            Observatorio.necesitanTraduccion("Argentina", "Bolivia").shouldBe(false)
-            Observatorio.sonPotencialesAliados("Argentina", "Bolivia").shouldBe(true)
-            Observatorio.convieneIrDeCompras("Argentina", "Bolivia").shouldBe(false)
-            Observatorio.aCuantoEquivale(25,"Argentina", "Bolivia").shouldBe(1.37)
-            Observatorio.codigoIsoPaisesMasPoblacion().shouldBe(listOf("NGA", "PRT", "ITA", "USA", "ARG"))
-            Observatorio.continenteConMasPaisesPlurinacionales().shouldBe("América")
-            Observatorio.promedioDensidadPoblacionalInsulares().shouldBe(83003)
+        Observatorio.registrarPais(bolivia)
+        Observatorio.registrarPais(argentina)
+        Observatorio.registrarPais(estadosUnidos)
+        Observatorio.registrarPais(italia)
+        Observatorio.registrarPais(portugal)
+        Observatorio.registrarPais(nigeria)
+
+        describe("Test Observatorio") {
+            it("Argentina y Bolivia son limitrofes") {
+                Observatorio.sonLimitrofes("Argentina" ,"Bolivia").shouldBe(true)
+            }
+            it("Argentina y Bolivia no necesitan traducción.") {
+                Observatorio.necesitanTraduccion("Argentina", "Bolivia").shouldBe(false)
+            }
+            it("Argentina y Bolivia son potenciales aliados.") {
+                Observatorio.sonPotencialesAliados("Argentina", "Bolivia").shouldBe(true)
+            }
+            it("No conviene ir de compras de Argentina a Bolivia.") {
+                Observatorio.convieneIrDeCompras("Argentina", "Bolivia").shouldBe(false)
+            }
+            it("25 ARG equivalen a 1.37 BOL") {
+                Observatorio.aCuantoEquivale(25,"Argentina", "Bolivia").shouldBe(1.37)
+            }
+            it("Los codigos ISO de los paises más poblados son: NGA, PRT, ITA, USA, ARG ") {
+                Observatorio.codigoIsoPaisesMasPoblacion().shouldBe(listOf("NGA", "PRT", "ITA", "USA", "ARG"))
+            }
+            it("El continente con más paises plurinacionales es América.") {
+                Observatorio.continenteConMasPaisesPlurinacionales().shouldBe("América")
+            }
+            it("El promedio de densidad poblacional de los paises insulares es de 83003") {
+                Observatorio.promedioDensidadPoblacionalInsulares().shouldBe(83003)
+            }
         }
     }
 )

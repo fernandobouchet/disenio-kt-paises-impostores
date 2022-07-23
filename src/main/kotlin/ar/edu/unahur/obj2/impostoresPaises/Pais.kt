@@ -34,10 +34,10 @@ class Pais(
 
     fun vecinoMasPoblado(): Pais {
         val limitrofeMasPoblado =  paisesLimitrofes.maxByOrNull { it.poblacion }
-        if ((limitrofeMasPoblado != null) && (limitrofeMasPoblado.poblacion > this.poblacion)) {
-           return limitrofeMasPoblado
+        return if ((limitrofeMasPoblado != null) && (limitrofeMasPoblado.poblacion > this.poblacion)) {
+            limitrofeMasPoblado
         } else {
-            return this
+            this
         }
     }
 

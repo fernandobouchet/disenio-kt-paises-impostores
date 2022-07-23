@@ -1,7 +1,7 @@
 package ar.edu.unahur.obj2.impostoresPaises
 
 object Observatorio {
-    private val paisesRegistrados = mutableListOf<Pais>()
+    val paisesRegistrados = mutableListOf<Pais>()
 
     fun registrarPais(pais: Pais) {
         paisesRegistrados.add(pais)
