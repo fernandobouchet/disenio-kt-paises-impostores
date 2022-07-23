@@ -37,7 +37,7 @@ object Observatorio {
         if (paisesRegistrados.size >= 5) {
             return paisesRegistrados.sortedByDescending { it.densidadPoblacional() }
                 .take(5)
-                .map { pais -> pais.codigoIso3 }
+                .map { pais -> pais.codigoIso3!! }
         } else throw Exception("No se encuentran en el observatorio el mínimo de 5 paises necesarios para esta función.")
     }
 
@@ -45,7 +45,7 @@ object Observatorio {
         val paisesPlurincionales = paisesRegistrados.filter { pais -> pais.esPlurinacional() }
         if(paisesPlurincionales.isNotEmpty()) {
             return paisesPlurincionales
-                .groupBy { it.continente }
+                .groupBy { it.continente!! }
                 .maxByOrNull { it.value.size }!!.key
         } else throw Exception("No se encontraron paises plurinacionales en el observatorio")
     }

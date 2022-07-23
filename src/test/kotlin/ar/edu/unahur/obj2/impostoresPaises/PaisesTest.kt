@@ -5,8 +5,30 @@ import io.kotest.matchers.shouldBe
 
 class PaisesTest: DescribeSpec({
 
-    val bolivia = Pais("Bolivia", "BOL",11067000, 1098581.0,"América", "BOB", 6.87, mutableListOf<String>("UNASUR"), mutableListOf<String>("Español", "Quechua", "Aymara"))
-    val argentina = Pais("Argentina", "ARG",45038000, 2078000.0,"América", "ARG", 125.59, mutableListOf<String>("MERCOSUR","UNASUR"), mutableListOf<String>("Español"))
+    val bolivia = Pais.Builder()
+        .nombre("Bolivia")
+        .codigoIso3("BOL")
+        .poblacion(11067000)
+        .superficie(1098581.0)
+        .continente("América")
+        .codigoMoneda("BOB")
+        .cotizacionDolar(6.87)
+        .bloquesRegionales(mutableListOf<String>("UNASUR"))
+        .idiomasOficiales(mutableListOf<String>("Español", "Quechua", "Aymara"))
+        .build()
+
+    val argentina = Pais.Builder()
+        .nombre("Argentina")
+        .codigoIso3("ARG")
+        .poblacion(45038000)
+        .superficie(2078000.0)
+        .continente("América")
+        .codigoMoneda("ARG")
+        .cotizacionDolar(125.59)
+        .bloquesRegionales(mutableListOf<String>("MERCOSUR","UNASUR"))
+        .idiomasOficiales(mutableListOf<String>("Español"))
+        .build()
+
     bolivia.aniadirPaisesLimitrofes(argentina)
     argentina.aniadirPaisesLimitrofes(bolivia)
 
