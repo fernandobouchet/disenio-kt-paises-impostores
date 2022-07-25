@@ -29,8 +29,32 @@ class PaisesTest: DescribeSpec({
         .idiomasOficiales(mutableListOf<String>("Español"))
         .build()
 
+    val uruguay = Pais.Builder()
+        .poblacion(2038000)
+        .build()
+    val paraguay=Pais.Builder()
+        .poblacion(2838000)
+        .build()
+    val brasil = Pais.Builder()
+        .poblacion(60038000)
+        .build()
+    val chile = Pais.Builder()
+        .poblacion(3038000)
+        .build()
+    val peru = Pais.Builder()
+        .poblacion(3038000)
+        .build()
+
     bolivia.aniadirPaisesLimitrofes(argentina)
+    bolivia.aniadirPaisesLimitrofes(brasil)
+    bolivia.aniadirPaisesLimitrofes(peru)
+    bolivia.aniadirPaisesLimitrofes(chile)
+    bolivia.aniadirPaisesLimitrofes(paraguay)
     argentina.aniadirPaisesLimitrofes(bolivia)
+    argentina.aniadirPaisesLimitrofes(chile)
+    argentina.aniadirPaisesLimitrofes(uruguay)
+    argentina.aniadirPaisesLimitrofes(paraguay)
+    argentina.aniadirPaisesLimitrofes(brasil)
 
     describe("Test sobre Bolivia") {
         it("No es plurinacional") {
@@ -56,6 +80,9 @@ class PaisesTest: DescribeSpec({
         }
         it("100 BOL equivalen a 1828.09 ARG") {
             bolivia.aCuantoEquivaleEn(100 , argentina).shouldBe(1828.09)
+        }
+        it("Su vecino más poblado es Brasil") {
+            bolivia.vecinoMasPoblado().shouldBe(brasil)
         }
     }
 })
