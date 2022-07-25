@@ -8,8 +8,8 @@ object Observatorio {
     }
 
     private fun paisQueRepresenta(pais: String): Pais? {
-        return if(paisesRegistrados.isNotEmpty() && paisesRegistrados.any { x -> x.nombre == pais }) {
-            paisesRegistrados.find { a -> a.nombre == pais }
+        return if(paisesRegistrados.isNotEmpty() && paisesRegistrados.any { unPais -> unPais.nombre == pais }) {
+            paisesRegistrados.find { unPais -> unPais.nombre == pais }
         } else throw Exception("Uno de los paises indicado no se encuentra registrado en el observatorio.")
     }
 
