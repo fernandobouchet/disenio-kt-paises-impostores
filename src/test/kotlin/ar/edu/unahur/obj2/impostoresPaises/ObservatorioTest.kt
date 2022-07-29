@@ -26,6 +26,10 @@ class ObservatorioTest: DescribeSpec(
         observatorio.registrarPais(nigeria)
 
         describe("Test Observatorio") {
+            it("Una variable nueva contiene la misma instancia") {
+                val observatorio2 = Observatorio.getInstance()
+                (observatorio2 == observatorio).shouldBe(true)
+            }
             it("Argentina y Bolivia son limitrofes") {
                 observatorio.sonLimitrofes("Argentina" ,"Bolivia").shouldBe(true)
             }
