@@ -1,6 +1,16 @@
 package ar.edu.unahur.obj2.impostoresPaises
 
-object Observatorio {
+class Observatorio {
+    companion object{
+        private var instance : Observatorio? = null
+        fun getInstance() : Observatorio {
+            if(instance == null) {
+                instance =  Observatorio();
+            }
+            return instance as Observatorio
+        }
+    }
+
     val paisesRegistrados = mutableListOf<Pais>()
 
     fun registrarPais(pais: Pais) {

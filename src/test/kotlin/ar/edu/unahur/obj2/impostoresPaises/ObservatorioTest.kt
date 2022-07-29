@@ -14,39 +14,41 @@ class ObservatorioTest: DescribeSpec(
         bolivia.aniadirPaisesLimitrofes(argentina)
         argentina.aniadirPaisesLimitrofes(bolivia)
 
-        Observatorio.paisesRegistrados.clear()
+        val observatorio = Observatorio.getInstance()
 
-        Observatorio.registrarPais(bolivia)
-        Observatorio.registrarPais(argentina)
-        Observatorio.registrarPais(estadosUnidos)
-        Observatorio.registrarPais(italia)
-        Observatorio.registrarPais(portugal)
-        Observatorio.registrarPais(nigeria)
+        observatorio.paisesRegistrados.clear()
+
+        observatorio.registrarPais(bolivia)
+        observatorio.registrarPais(argentina)
+        observatorio.registrarPais(estadosUnidos)
+        observatorio.registrarPais(italia)
+        observatorio.registrarPais(portugal)
+        observatorio.registrarPais(nigeria)
 
         describe("Test Observatorio") {
             it("Argentina y Bolivia son limitrofes") {
-                Observatorio.sonLimitrofes("Argentina" ,"Bolivia").shouldBe(true)
+                observatorio.sonLimitrofes("Argentina" ,"Bolivia").shouldBe(true)
             }
             it("Argentina y Bolivia no necesitan traducción.") {
-                Observatorio.necesitanTraduccion("Argentina", "Bolivia").shouldBe(false)
+                observatorio.necesitanTraduccion("Argentina", "Bolivia").shouldBe(false)
             }
             it("Argentina y Bolivia son potenciales aliados.") {
-                Observatorio.sonPotencialesAliados("Argentina", "Bolivia").shouldBe(true)
+                observatorio.sonPotencialesAliados("Argentina", "Bolivia").shouldBe(true)
             }
             it("No conviene ir de compras de Argentina a Bolivia.") {
-                Observatorio.convieneIrDeCompras("Argentina", "Bolivia").shouldBe(false)
+                observatorio.convieneIrDeCompras("Argentina", "Bolivia").shouldBe(false)
             }
             it("25 ARG equivalen a 1.37 BOL") {
-                Observatorio.aCuantoEquivale(25,"Argentina", "Bolivia").shouldBe(1.37)
+                observatorio.aCuantoEquivale(25,"Argentina", "Bolivia").shouldBe(1.37)
             }
             it("Los codigos ISO de los paises más poblados son: NGA, PRT, ITA, USA, ARG ") {
-                Observatorio.codigoIsoPaisesMasPoblacion().shouldBe(listOf("NGA", "PRT", "ITA", "USA", "ARG"))
+                observatorio.codigoIsoPaisesMasPoblacion().shouldBe(listOf("NGA", "PRT", "ITA", "USA", "ARG"))
             }
             it("El continente con más paises plurinacionales es América.") {
-                Observatorio.continenteConMasPaisesPlurinacionales().shouldBe("América")
+                observatorio.continenteConMasPaisesPlurinacionales().shouldBe("América")
             }
             it("El promedio de densidad poblacional de los paises insulares es de 83003") {
-                Observatorio.promedioDensidadPoblacionalInsulares().shouldBe(83003)
+                observatorio.promedioDensidadPoblacionalInsulares().shouldBe(83003)
             }
         }
     }
